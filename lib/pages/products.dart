@@ -3,6 +3,12 @@ import '../product_manager.dart';
 import './products_admin.dart';
 
 class ProductsPage extends StatelessWidget {
+  final List<Map<String, String>> _products;
+  final Function _addProduct;
+  final Function _deleteProduct;
+
+  ProductsPage(this._products, this._addProduct, this._deleteProduct);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +33,6 @@ class ProductsPage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Flutter Test App3"),
         ),
-        body: ProductManager());
+        body: ProductManager(this._products, this._addProduct, this._deleteProduct));
   }
 }

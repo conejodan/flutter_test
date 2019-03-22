@@ -10,9 +10,9 @@ class ProductCreate extends StatefulWidget {
 }
 
 class _ProductCreateState extends State<ProductCreate> {
-  String titleValue = "";
-  String descriptionValue = "";
-  double priceValue;
+  String _titleValue = "";
+  String _descriptionValue = "";
+  double _priceValue;
 
   @override
   Widget build(BuildContext context) {
@@ -24,40 +24,48 @@ class _ProductCreateState extends State<ProductCreate> {
             decoration: InputDecoration(labelText: "Product Title"),
             onChanged: (String value) {
               setState(() {
-                titleValue = value;
+                _titleValue = value;
               });
             },
           ),
-          Text(titleValue),
+          //Text(_titleValue),
           TextField(
             decoration: InputDecoration(labelText: "Product Description"),
             maxLines: 4,
             onChanged: (String value) {
               setState(() {
-                descriptionValue = value;
+                _descriptionValue = value;
               });
             },
           ),
-          Text(descriptionValue),
+          //Text(_descriptionValue),
           TextField(
             decoration: InputDecoration(labelText: "Product Price"),
             keyboardType: TextInputType.number,
             onChanged: (String value) {
               setState(() {
-                priceValue = double.parse(value);
+                _priceValue = double.parse(value);
               });
             },
           ),
-          Text(priceValue.toString()),
-          RaisedButton(child: Text("Guardar"),onPressed: (){
-            final Map<String, dynamic> product = {
-              "title" :titleValue,
-              "description" :descriptionValue,
-              "price" :priceValue,
-              "image": "assets/food.jpg"
-            };
-            widget.addProduct(product);
-          },),
+          //Text(priceValue.toString()),
+          SizedBox(
+            height: 13.0,
+          ),
+          RaisedButton(
+            child: Text("Guardar"),
+            textColor: Colors.white,
+            onPressed: () {
+              final Map<String, dynamic> product = {
+                "title": _titleValue,
+                "description": _descriptionValue,
+                "price": _priceValue,
+                "image": "assets/food.jpg"
+              };
+              widget.addProduct(product);
+              Navigator.pushReplacementNamed(context, "/products");
+            },
+          ),
           Center(
             child: RaisedButton(
               child: Text("Modal"),

@@ -27,7 +27,7 @@ class ProductsAdminPage extends StatelessWidget {
                 title: Text("All Products"),
                 onTap: () {
                   print("All Products");
-                  Navigator.pushReplacementNamed(context,"/");
+                  Navigator.pushReplacementNamed(context,"/products");
                 },
               ),
             ],

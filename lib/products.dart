@@ -11,7 +11,7 @@ class Products extends StatelessWidget {
         children: <Widget>[
           Image.asset(products[index]["image"]),
           Container(
-            margin: EdgeInsets.only(top: 10.0),
+            padding: EdgeInsets.only(top: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -23,19 +23,27 @@ class Products extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 3.5),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).accentColor,
-                    borderRadius: BorderRadius.circular(5.0)
-                  ),
+                      color: Theme.of(context).accentColor,
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Text(
                     "\$${products[index]['price']}",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white
-                    ),
+                        fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ),
               ],
             ),
+          ),
+          SizedBox(height: 10.0,),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.6),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey,
+              ),
+              borderRadius: BorderRadius.circular(5.0)
+            ),
+            child: Text("Plaza de Armas, Villahermosa"),
           ),
           ButtonBar(
             alignment: MainAxisAlignment.center,

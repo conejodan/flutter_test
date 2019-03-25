@@ -20,7 +20,7 @@ class ProductsPage extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.edit),
                 title: Text("Manage Products"),
-                onTap: (){
+                onTap: () {
                   print("Manage Products");
                   Navigator.pop(context);
                   Navigator.pushReplacementNamed(context, '/admin');
@@ -30,7 +30,14 @@ class ProductsPage extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          title: Text("Flutter Test App3"),
+          title: Text("Flutter Test"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.favorite),
+              //color: Colors.red,
+              onPressed: () {},
+            )
+          ],
         ),
         body: ProductManager(this._products));
   }

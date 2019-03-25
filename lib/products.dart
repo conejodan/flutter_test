@@ -48,8 +48,10 @@ class Products extends StatelessWidget {
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlatButton(
-                child: Text("Detalle"),
+              IconButton(
+                //child: Text("Detalle"),
+                icon: Icon(Icons.info),
+                color: Theme.of(context).accentColor,
                 onPressed: () => {
                       Navigator.pushNamed<bool>(context, "/product/$index")
                       //     .then((bool value) {
@@ -57,6 +59,13 @@ class Products extends StatelessWidget {
                       //     deleteProduct(index);
                       //   }
                       // })
+                    },
+              ),
+              IconButton(
+                color: Colors.red,
+                icon: Icon(Icons.favorite_border),
+                onPressed: () => {
+                      Navigator.pushNamed<bool>(context, "/product/$index")
                     },
               )
             ],

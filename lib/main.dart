@@ -21,7 +21,8 @@ class _MyAppState extends State<MyApp> {
   List<Map<String, dynamic>> _products = [
     {
       'title': "Chocolate",
-      'description': "This is a great chocolate that you dont need to capture anymore",
+      'description':
+          "This is a great chocolate that you dont need to capture anymore",
       'price': 25.0,
       'image': "assets/food.jpg",
     }
@@ -32,6 +33,12 @@ class _MyAppState extends State<MyApp> {
       _products.add(product);
     });
     print(_products);
+  }
+
+  void _updateProduct(Map<String, dynamic> product, int index) {
+    setState(() {
+      _products[index] = product;
+    });
   }
 
   void _deleteProduct(int index) {
@@ -53,7 +60,7 @@ class _MyAppState extends State<MyApp> {
         '/': (BuildContext context) => AuthPage(),
         '/products': (BuildContext context) => ProductsPage(_products),
         '/admin': (BuildContext context) =>
-            ProductsAdminPage(_addProduct, _deleteProduct)
+            ProductsAdminPage(_addProduct, _updateProduct, _deleteProduct, _products)
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split("/");

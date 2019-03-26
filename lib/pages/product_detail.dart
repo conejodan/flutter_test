@@ -36,21 +36,8 @@ class ProductPage extends StatelessWidget {
         });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      child: Scaffold(
-          appBar: AppBar(
-            title: Text(title),
-          ),
-          body: Column(
-            children: <Widget>[
-              Image.asset(image),
-              Container(
-                child: TitleDefault(title),
-                padding: EdgeInsets.all(10.0),
-              ),
-              Row(
+  Widget _buildAddressPriceRow(){
+    return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
@@ -71,7 +58,24 @@ class ProductPage extends StatelessWidget {
                     style: TextStyle(color: Colors.grey),
                   ),
                 ],
+              );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text(title),
+          ),
+          body: Column(
+            children: <Widget>[
+              Image.asset(image),
+              Container(
+                child: TitleDefault(title),
+                padding: EdgeInsets.all(10.0),
               ),
+              _buildAddressPriceRow(),
               Container(
                 padding: EdgeInsets.all(10.0),
                 //alignment: Alignment.center,

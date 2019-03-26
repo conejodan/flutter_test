@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import '../widgets/ui_elements/title_default.dart';
 
 class ProductPage extends StatelessWidget {
   final String title;
   final String image;
+  final double price;
+  final String description;
 
-  ProductPage(this.title, this.image);
+  ProductPage(this.title, this.image, this.price, this.description);
 
   _showWarningDialog(BuildContext context) {
     showDialog(
@@ -44,8 +47,38 @@ class ProductPage extends StatelessWidget {
             children: <Widget>[
               Image.asset(image),
               Container(
-                child: Text(title),
+                child: TitleDefault(title),
                 padding: EdgeInsets.all(10.0),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "Plaza de Armas, Villahermosa",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                      horizontal: 5.0,
+                    ),
+                    child: Text(
+                      "|",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                  Text(
+                    "\$" + price.toString(),
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.all(10.0),
+                //alignment: Alignment.center,
+                child: Text(
+                  description,
+                  textAlign: TextAlign.center,
+                ),
               ),
               Container(
                 child: RaisedButton(

@@ -18,7 +18,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Map<String, dynamic>> _products = [];
+  List<Map<String, dynamic>> _products = [
+    {
+      'title': "Chocolate",
+      'description': "This is a great chocolate that you dont need to capture anymore",
+      'price': 25.0,
+      'image': "assets/food.jpg",
+    }
+  ];
 
   void _addProduct(Map<String, dynamic> product) {
     setState(() {
@@ -45,7 +52,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (BuildContext context) => AuthPage(),
         '/products': (BuildContext context) => ProductsPage(_products),
-        '/admin': (BuildContext context) => ProductsAdminPage(_addProduct, _deleteProduct)
+        '/admin': (BuildContext context) =>
+            ProductsAdminPage(_addProduct, _deleteProduct)
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split("/");
@@ -56,15 +64,19 @@ class _MyAppState extends State<MyApp> {
           final int index = int.parse(pathElements[2]);
           return MaterialPageRoute<bool>(
             builder: (BuildContext context) => ProductPage(
-                _products[index]["title"], _products[index]["image"]),
+                  _products[index]["title"],
+                  _products[index]["image"],
+                  _products[index]["price"],
+                  _products[index]["description"],
+                ),
           );
         }
 
         return null;
       },
-      onUnknownRoute: (RouteSettings settings){
-        return MaterialPageRoute(builder: (BuildContext context) =>
-            ProductsPage(_products));
+      onUnknownRoute: (RouteSettings settings) {
+        return MaterialPageRoute(
+            builder: (BuildContext context) => ProductsPage(_products));
       },
     );
   }
